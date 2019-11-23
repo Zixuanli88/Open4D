@@ -19,17 +19,13 @@ var Trajectory1 = [ "Pics/Virtual_Camera_1.mp4",
 				   	"Pics/Virtual_Camera_2.mp4",
 					"Pics/Virtual_Camera_1.mp4", ];
 
-
-
-
-
 var VideoLink = document.getElementById('video');
 
 //Populate camera trajectory buttons from array
 var TrajectoryButtons = Trajectory1.map((option,index) => {
       return '<input type="radio" id='+ index +
                      ' value='+ option +
-                     ' name="buttonGroup" onclick="VideoLink.src =this.value" onclick="enable_next_step_button()"><label for='+ index +'><img src="Pics/TrajectoryButton/TrajectoryButton'+index+'.png" Class="TrajectoryButton"></label>';
+                     ' name="buttonGroup" onclick="VideoLink.src =this.value"><label for='+ index +' onclick="enable_next_step_button()"><img src="Pics/TrajectoryButton/TrajectoryButton'+index+'.png" Class="TrajectoryButton"></label>';
  });
 
 $("#TrajectoryButtonArea").html(TrajectoryButtons.join(""));
@@ -37,28 +33,12 @@ $("#TrajectoryButtonArea").html(TrajectoryButtons.join(""));
 //Populate camera trajectory buttons from array
 
 var OriginalVideoButtons = VideoGroup1.map((option,index) => {
-      return '<input type="radio" id='+ index +
+      return '<input type="radio" id='+ index+3 +
                      ' value='+ option +
-                     ' name="buttonGroup" onclick="VideoLink.src =this.value" onclick="enable_next_step_button()"><label for='+ index +'><video playsinline src='+ option+'#t=0.1 Class="VideoButton"></label>';
+                     ' name="buttonGroup" onclick="VideoLink.src =this.value"><label for='+ index+3 +' onclick="enable_next_step_button()"><video playsinline src='+ option+'#t=0.1 Class="VideoButton"></label>';
  });
 
 $("#OriginalButtonArea").html(OriginalVideoButtons.join(""));
-
-
-/*
-var select = document.getElementsByName('buttonGroup'); 
-              
-	for(i = 0; i < select.length; i++) { 
-	    if(select[i].checked) 
-	    document.getElementById('video').src =select[i].value
-		document.getElementById("buttonArea").innerHTML
-	                        = "Gender: "+select[i].value; 
-	} 
-
-
-
-*/
-
 
 //tools page
 //Right Tab
@@ -77,18 +57,18 @@ function RightTab(evt, TabName){
   	document.getElementById(TabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
-
+			
 //next step button
 function enable_next_step_button() {
-            document.getElementById("next-step-button").disabled = false;
-            console.log('Button is Listening');
-        }
+     document.getElementById("next-step-button").disabled = false;
+     console.log('Button is Listening');
+}
 
+document.getElementById("defaultOpen").click();
 
-document.getElementsByClassName('tablinks')[0].click()
-
-
+function NextStep(){
+	document.getElementById("EditFunction").click();
+}
 
 //edit page
 var canvas = document.getElementById('video');
@@ -122,7 +102,6 @@ img.onload = function() {
 }
 
 img.src = document.getElementById(video);
-
 
 
 

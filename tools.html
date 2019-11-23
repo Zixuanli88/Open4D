@@ -7,8 +7,6 @@
 </head>
 <body>
 
-
-
 <!-- navbar -->
           <header>    
               <a href="index.html"><img id="logo" src="Pics/Open4D_Logo.png" title="logo"></a>
@@ -19,46 +17,36 @@
 					  <a href="#about">About</a>
 			      </div>
           </header>
-
     <div class="app">
+
   <!-- Left Tab -->
   		<div class="column left">
-
-
-			<video id="video" controls autoplay poster=black>
+			<video id="video" controls autoplay poster=Pics/black.png>
 			  <source src="devstories.webm" 
 			          type='video/webm;codecs="vp8, vorbis"' />
 			  <source src="devstories.mp4" 
-			          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />
-			 
+			          type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"' />			 
 			</video>
-
-
-
-
 		</div>
 
  <!-- Right Tab -->
   		<div class="column right">
 			<div class="tab">
-			  <button class="tablinks" onclick="RightTab(event, 'Camera')">Camera</button>
-			  <button class="tablinks" onclick="RightTab(event, 'Edit')">Edit</button>
+			  <button class="tablinks" onclick="RightTab(event, 'Camera')" id="defaultOpen">Camera</button>
+			  <button class="tablinks" onclick="RightTab(event, 'Edit')" id="EditFunction">Edit</button>
 			  <button class="tablinks" onclick="RightTab(event, 'Improve')">Improve</button>
 			</div>
 
-
            <div id="Camera" class="tabcontent">
 
-	           	<p>Select a virtual camera trajectory</p>
+	           	<p class="H3">Select a virtual camera trajectory</p>
 
 	            <span id="TrajectoryButtonArea"></span>
 	       	  
-       	   		<p>Or select one of the original videos</p>
+       	   		<p class="H3">Or select one of the original videos</p>
        	   		<span id="OriginalButtonArea"></span>
-
-	            
-	        
-	            <p>Select Time</p>
+	           
+	            <p class="H3">Define End and Start Time</p>
 	             <div class="StartTime">
 	            	<form>
 	            	Start Time: <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/> : <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/>
@@ -66,36 +54,37 @@
 				</div>
 				<div class="EndTime">
 	            	<form>
-	            	End Time:    <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/> : <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/>
+	            	End Time: <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/> : <input type="number" id="myInput" min="0" max="1000" step = "1" placeholder=00 required/>
 					</form>
 				</div>
 
-
-			
-	            <button id = "next-step-button" style="cursor: pointer;" type="button" disabled>Next Step</button>
-	         
+	            <button id ="next-step-button" style="cursor: pointer;" type="button" disabled onclick="NextStep()">Next Step</button>
 	    </div>
 
 		<div id="Edit" class="tabcontent">
 			<h3>Edit</h3>
-			<p>Hover to see objects available for editing.</p> 
+			<p>Hover to see objects available for editing. Click to select objects</p> 
+
+			<button id ="duplicate-button" style="cursor: pointer;" type="button">Duplicate</button>
+			<button id ="delete-button" style="cursor: pointer;" type="button">Delete</button>
+
 		</div>
 
 		<div id="Improve" class="tabcontent">
 		  <h3>Improve</h3>
-		  <p>Inprove rendering with user input.</p>
+		  <p>Inprove rendering with user input. Click to free hand draw an area on the video frame.</p>
+
+		  <button id ="select-area-button" style="cursor: pointer;" type="button" onclick="getFrame()">Select Area</button>
+
 		</div>
 		</div>
 
 
 	</div>
 
-
 <script src="main.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"></script>
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </body>
 </html>
